@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du chiffre caché</title>
+</head>
+<body>
+    <script>
+        
+        function chiffreAlea(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function jouer(difficulté) {
+            let maxEssais, min, max;
+            switch (difficulté) {
+                case 'Facile':
+                    min = 1;
+                    max = 10;
+                    maxEssais = 5;
+                    break;
+                case "Intermediaire":
+                    min = 1;
+                    max = 50;
+                    maxEssais = 10;
+                    break;
+                case "Difficile":
+                    min = 1;
+                    max = 100;
+                    maxEssais = 15;
+                    break;
+            }
+
+            const key = chiffreAlea(min, max);
+            let nbEssaies = 0;
+            while (nbEssaies < maxEssais) {
+                const essaie = parseInt(prompt("Devinez le key!"));
+                if (essaie == key) {
+                    alert('Bravo!Vous avez gagné après '+ (nbEssaies+1) +' essaies!');
+                    return;
+                } else {
+                    alert("veuillez entrer une autre essaie");
+                }
+                nbEssaies++;
+            }
+            alert('Désolé,vous avez échoué! le key est:' +key);
+        }
+
+        function demmarageJeu() {
+            let repeter = true;
+            let a;
+            while (repeter) {
+                const difficulté = prompt("Veuillez choisir le niveau de difficulté:");
+                jouer(difficulté);
+                a = prompt("Voulez vous repeter le jeu?");
+                if (a != "oui") {
+                    repeter == false;
+                    break;
+                }
+            }
+            alert("Merci d'avoir joué!");
+        }
+
+        demmarageJeu();
+    </script>
+</body>
+</html>

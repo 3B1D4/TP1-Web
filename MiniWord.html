@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Word</title>
+</head>
+<body>
+
+    <label for="couleur">Choisir une couleur :</label>
+    <input type="color" id="couleur">
+
+    <label for="FontSize">Taille de la police :</label>
+    <input type="number" id="FontSize" min="1" max="50" value="16">
+
+
+    <label for="Caractère">Choisir une police :</label>
+    <select id="Caractère">
+        <option value="Arial">Arial</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Caviar Dreams">Caviar Dreams</option>
+  
+    </select>
+
+
+    <p id="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac leo eget nulla mattis dignissim in et enim.</p>
+
+    <script>
+  
+        const couleur = document.getElementById('couleur');
+        const FontSize = document.getElementById('FontSize');
+        const Caractère = document.getElementById('Caractère');
+        const paragraph = document.getElementById('paragraph');
+
+  
+        couleur.addEventListener('input', function() {
+        paragraph.style.color = couleur.value;
+        });
+
+  
+        FontSize.addEventListener('input', function() {
+        paragraph.style.fontSize= FontSize.value + 'px';
+        });
+
+        Caractère.addEventListener('change', function() {
+        paragraph.style.fontFamily = Caractère.value;
+        });
+</script>
+
+</body>
+</html>
